@@ -3,6 +3,8 @@ const router = express.Router();
 
 // @route GET api/users
 // @access public
-router.get('/', (req, res) => {
-    res.send('User route working');
-})
+router.get('/', (req, res) =>
+    res.send('User route working')
+)
+
+module.exports = router;
