@@ -36,7 +36,7 @@ router.post('/', [
             if (user) {
                 res.status(400).json({ errors: [{ msg: 'User already exists' }] });
             }
-
+            //grabs users Gravatar
             const avatar = gravatar.url(email, {
                 s: '200', //size of 200
                 r: 'pg', //sets gravatar to PG. no naked!
@@ -49,14 +49,12 @@ router.post('/', [
                 avatar,
                 password
             })
-
-
-            //grabs users Gravatar
-
             //encrypt Password with Bcrypt
-
-            //return jsonwebtoken
+            const salt = await bcrypt.genSalt(10);
+            user.password = await bcrypt.hash(password, salt);
+            await user.save();
             res.send('User route working')
+            //return jsonwebtoken
 
 
         } catch (err) {
