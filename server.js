@@ -10,6 +10,11 @@ const app = express();
 //connect db
 connectDB();
 
+//init middleware
+//bodyParser
+app.use(express.json({ extended: false }));
+
+
 app.get('/', (req, res) => res.send('API Working'));
 
 //Define Routes
