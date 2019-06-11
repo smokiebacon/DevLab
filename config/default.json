@@ -1,3 +1,4 @@
 {
-    "mongoURI": "mongodb+srv://smokiebacon:123456a123@devlab-1gpkp.mongodb.net/test?retryWrites=true&w=majority"
+    "mongoURI": "mongodb+srv://smokiebacon:123456a123@devlab-1gpkp.mongodb.net/test?retryWrites=true&w=majority",
+    "jwtToken": "mysecrettoken"
 }
