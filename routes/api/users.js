@@ -31,10 +31,10 @@ router.post('/', [
         const { name, email, password } = req.body;
 
         try {
-            let user = User.findOne({ email });
+            let user = await User.findOne({ email });
             //check if User exists
             if (user) {
-                res.status(400).json({ errors: [{ msg: 'User already exists' }] });
+                return res.status(400).json({ errors: [{ msg: 'User already exists' }] });
             }
             //grabs users Gravatar
             const avatar = gravatar.url(email, {
@@ -53,7 +53,7 @@ router.post('/', [
             const salt = await bcrypt.genSalt(10);
             user.password = await bcrypt.hash(password, salt);
             await user.save();
-            res.send('User route working')
+            res.send('User registered');
             //return jsonwebtoken
 
 
