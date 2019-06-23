@@ -23,6 +23,8 @@ router.get('/me', auth, async (req, res) => {
     }
 })
 
+
+
 // @route GET api/profiles
 // @get all profiles
 // @access public
@@ -35,6 +37,28 @@ router.get('/', async (req, res) => {
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error in profiles.js get ALL profiles');
+    }
+})
+
+// @route GET api/profiles/user/:user_id
+// @get profile by user id
+// @access public
+
+router.get('/user/:user_id', async (req, res) => {
+    try {
+        const foundProfile = await Profile.findOne({ user: req.params.user_id }).populate('user', ['name', 'avatar']);
+        if (!foundProfile) {
+            return res.status(400).json({ msg: 'Profile not found' })
+        }
+        res.json(foundProfile);
+
+    } catch (err) {
+        console.error(err.message);
+        if (err.kind == 'ObjectId') {
+            return res.status(400).json({ msg: 'Profile not found' })
+
+        }
+        res.status(500).send('Server Error in profiles.js get profile/:id');
     }
 })
 
