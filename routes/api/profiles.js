@@ -18,10 +18,27 @@ router.get('/me', auth, async (req, res) => {
         res.json(profile);
     } catch (err) {
         console.error(err.message);
-        res.status(500).send('Server Error in profiles.js');
+        res.status(500).send('Server Error in profiles.js in /me route');
 
     }
 })
+
+// @route GET api/profiles
+// @get all profiles
+// @access public
+
+router.get('/', async (req, res) => {
+    try {
+        const allProfiles = await Profile.find().populate('user', ['name', 'avatar']);
+        res.json(allProfiles);
+
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error in profiles.js get ALL profiles');
+    }
+})
+
+
 
 // @route POST api/profiles
 // @get create or update a user's profile
