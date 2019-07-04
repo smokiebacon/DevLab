@@ -1,4 +1,6 @@
 {
     "mongoURI": "mongodb+srv://smokiebacon:123456a123@cluster0-1gpkp.mongodb.net/test?retryWrites=true&w=majority",
-    "jwtToken": "mysecrettoken"
+    "jwtToken": "mysecrettoken",
+    "githubClientId": "926daf52ce0cf52dbe3d",
+    "githubSecret": "eb9f49c30e8bb9963cf1edfe29a0a9869997fed9"
 }

@@ -290,4 +290,19 @@ router.delete('/education/:edu_id', auth, async (req, res) => {
         res.status(500).send('Server Error in Delete education route');
     }
 })
+
+
+// @route GET api/profiles/github/:username
+// @get User Repo's from github
+// @access Public
+
+router.get('/github/:username', (req, res) => {
+    try {
+
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error in /github/:username route')
+    }
+})
+
 module.exports = router;
