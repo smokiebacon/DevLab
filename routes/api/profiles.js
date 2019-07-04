@@ -1,4 +1,6 @@
 const express = require('express');
+const request = require('request')
+const config = require('config')
 const router = express.Router();
 const auth = require('../../middleware/auth');
 const Profile = require('../../models/Profile');
@@ -298,6 +300,9 @@ router.delete('/education/:edu_id', auth, async (req, res) => {
 
 router.get('/github/:username', (req, res) => {
     try {
+        const options = {
+            uri:
+        }
 
     } catch (err) {
         console.error(err.message);
