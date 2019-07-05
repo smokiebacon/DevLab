@@ -48,5 +48,52 @@ router.get('/', auth, async (req, res) => {
         res.status(500).send('Error in Posts GET Route')
     }
 })
+// @route GET api/posts/:id
+// @description GET a post by ID
+// @access Private
+
+router.get('/:id', auth, async (req, res) => {
+    try {
+        const onePost = await Post.findById(req.params.id);
+        if (!onePost) {
+            return res.status(404).json({ msg: 'Post not found' });
+        }
+        res.json(onePost);
+    } catch (err) {
+        console.error(err.message);
+        if (err.kind === 'ObjectId') {
+            //so if the :id is not equal to ID of post, give an error
+            return res.status(404).json({ msg: 'Post not found' });
+        }
+        res.status(500).send('Error in Posts GET Route')
+    }
+})
+
+// @route DELETE api/posts/:id
+// @description Delete a post by ID
+// @access Private
+router.delete('/:id', auth, async (req, res) => {
+    try {
+        const deletedPost = await Post.findById(req.params.id);
+        if (!deletedPost) {
+            return res.status(404).json({ msg: 'Post not found' });
+        }
+        //check user
+        if (deletedPost.user.toString() !== req.user.id) {
+            return res.status(401).send({ msg: 'User not authorized' });
+        }
+
+        await deletedPost.remove()
+        res.json({ msg: 'Post deleted' });
+    } catch (err) {
+        console.error(err.message);
+        if (err.kind === 'ObjectId') {
+            //so if the :id is not equal to ID of post, give an error
+            return res.status(404).json({ msg: 'Post not found' });
+        }
+        res.status(500).send('Error in Posts GET Route')
+    }
+})
+
 
 module.exports = router;
