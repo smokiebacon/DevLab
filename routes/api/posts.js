@@ -25,11 +25,8 @@ router.post('/', [
                 avatar: user.avatar,
                 user: req.user.id
             })
-
             const post = await newPost.save();
             res.json(post);
-
-
         } catch (err) {
             console.error(err.message);
             res.status(500).send('Error in Posts POST Route')
@@ -42,11 +39,10 @@ router.post('/', [
 // @description GET ALL posts
 // @access Private
 
-router.get('/', auth, (req, res) => {
+router.get('/', auth, async (req, res) => {
     try {
-
-
-
+        const allPosts = await Post.find().sort({ date: -1 });
+        res.json(allPosts);
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Error in Posts GET Route')
