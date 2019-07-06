@@ -8,8 +8,8 @@
           other developers
         </p>
         <div class="buttons">
-          <a href="register.html" class="btn btn-primary">Sign Up</a>
-          <a href="login.html" class="btn btn-light">Login</a>
+          <router-link class="btn btn-primary" to="/register">Register</router-link>
+          <router-link class="btn btn-light" to="/login">Login</router-link>
         </div>
       </div>
     </div>
@@ -21,7 +21,7 @@ export default {};
 </script>
 
 
-<style scoped>
+<style>
 .landing {
   position: relative;
   background: url("../../img/showcase.jpg") no-repeat center center/cover;

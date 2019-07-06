@@ -1,19 +1,20 @@
 <template>
   <nav class="navbar bg-dark">
     <h1>
-      <a href="index.html">
-        <i class="fas fa-code"></i> DevConnector
-      </a>
+      <router-link class="fas fa-code" to="/">DevLab</router-link>
     </h1>
     <ul>
       <li>
-        <a href="profiles.html">Developers</a>
+        <router-link to="/profiles">Developers</router-link>
       </li>
       <li>
-        <a href="register.html">Register</a>
+        <router-link to="/register">Register</router-link>
       </li>
       <li>
-        <a href="login.html">Login</a>
+        <router-link to="/login">Login</router-link>
+      </li>
+      <li>
+        <router-link to="/about">About Us</router-link>
       </li>
     </ul>
   </nav>

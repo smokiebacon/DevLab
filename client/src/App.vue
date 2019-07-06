@@ -2,12 +2,13 @@
   <div id="app">
     <Navbar />
     <Landing />
+    <router-view />
   </div>
 </template>
 
 <script>
-import Navbar from "./components/Layout/Navbar";
-import Landing from "./components/Layout/Landing";
+import Navbar from "@/components/Layout/Navbar";
+import Landing from "@/components/Layout/Landing";
 export default {
   name: "App",
   components: {
