@@ -1,19 +1,19 @@
 <template>
   <div id="app">
-    <Navbar />
-    <Landing />
+    <!-- <Landing /> -->
     <router-view />
+    <Navbar />
   </div>
 </template>
 
 <script>
 import Navbar from "@/components/Layout/Navbar";
-import Landing from "@/components/Layout/Landing";
+// import Landing from "@/components/Layout/Landing";
 export default {
   name: "App",
   components: {
-    Navbar,
-    Landing
+    Navbar
+    // Landing
   }
 };
 </script>
