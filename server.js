@@ -1,11 +1,12 @@
 const express = require('express');
+var cors = require('cors')
+
 const connectDB = require('./config/db');
 
 const auth = require('./routes/api/auth')
 const profiles = require('./routes/api/profiles')
 const posts = require('./routes/api/posts')
 const users = require('./routes/api/users')
-
 const app = express();
 //connect db
 connectDB();
@@ -13,6 +14,7 @@ connectDB();
 //init middleware
 //bodyParser
 app.use(express.json({ extended: false }));
+app.use(cors())
 
 
 app.get('/', (req, res) => res.send('API Working'));
